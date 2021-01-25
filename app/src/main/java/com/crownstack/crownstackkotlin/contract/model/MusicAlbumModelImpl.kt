@@ -6,6 +6,9 @@ import com.crownstack.crownstackkotlin.fragments.BaseFragment
 import com.crownstack.crownstackkotlin.fragments.HomeFragmentDirections
 import com.crownstack.crownstackkotlin.model.bo.ArtistBO
 import com.crownstack.crownstackkotlin.network.RetrofitApi
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.launch
 
 class MusicAlbumModelImpl(
     private var mMusicAlbumPresenter: MusicAlbumContract.IMusicAlbumPresenter,
@@ -13,18 +16,21 @@ class MusicAlbumModelImpl(
 ) : MusicAlbumContract.IMusicAlbumModel {
 
     override fun getMusicListFromServer(artistName: String) {
-        Thread(Runnable {
-            val musicListCall = RetrofitApi().getServerCallObject().getMusicList(artistName)
-            val execute = musicListCall.execute()
-            execute.let {
-                if (execute.isSuccessful) {
-                    val responseBody = execute.body()
-                    responseBody?.run {
-                        mMusicAlbumPresenter.onMusicListFromServerCallBack(this.mArtistList)
-                    }
+        CoroutineScope(IO).launch {
+            fetchMusicListServerCall(artistName)
+        }
+    }
+
+    private suspend fun fetchMusicListServerCall(artistName: String) {
+        val musicListResponse = RetrofitApi().getServerCallObject().getMusicList(artistName)
+        musicListResponse.let {
+            if (musicListResponse.isSuccessful) {
+                val responseBody = musicListResponse.body()
+                responseBody?.run {
+                    mMusicAlbumPresenter.onMusicListFromServerCallBack(this.mArtistList)
                 }
             }
-        }).start()
+        }
     }
 
     override fun onMusicItemClick(artistList: ArtistBO) {

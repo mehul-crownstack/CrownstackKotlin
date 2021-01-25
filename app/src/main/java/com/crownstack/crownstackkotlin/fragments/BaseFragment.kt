@@ -10,6 +10,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import com.crownstack.crownstackkotlin.R
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.launch
 
 open class BaseFragment : Fragment() {
 
@@ -33,11 +36,17 @@ open class BaseFragment : Fragment() {
     }
 
     protected fun stopProgress() {
-        activity?.runOnUiThread { mProgressDialog.run { mProgressDialog.dismiss() } }
+        CoroutineScope(Main).launch {
+            mProgressDialog.run {
+                mProgressDialog.dismiss()
+            }
+        }
     }
 
-    fun showToast(message:String = "sample testing") {
-        activity?.runOnUiThread { Toast.makeText(activity, message, Toast.LENGTH_SHORT).show() }
+    fun showToast(message: String = "sample testing") {
+        CoroutineScope(Main).launch {
+            Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
+        }
     }
 
 }

@@ -17,16 +17,14 @@ class SplashFragment : BaseFragment() {
         mNavController = findNavController()
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         mContentView = inflater.inflate(R.layout.fragment_splash, container, false)
         Handler(Looper.getMainLooper()).postDelayed({
             val action = SplashFragmentDirections.actionSplashFragmentToHomeFragment()
             mNavController.navigate(action)
         }, Constants.SPLASH_TIMER)
+        showToast(SplashFragment::class.java.simpleName)
         return mContentView
     }
 
