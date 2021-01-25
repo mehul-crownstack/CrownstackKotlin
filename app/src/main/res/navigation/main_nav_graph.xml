@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.crownstack.crownstackkotlin.fragments.SplashFragment"
+        android:label="Splash Screen"
+        tools:layout="@layout/fragment_splash">
+        <action
+            android:id="@+id/action_splashFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.crownstack.crownstackkotlin.fragments.HomeFragment"
+        android:label="Home Screen"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_songDetailFragment"
+            app:destination="@id/songDetailFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/songDetailFragment"
+        android:name="com.crownstack.crownstackkotlin.fragments.SongDetailFragment"
+        android:label="SongDetailFragment">
+        <argument
+            android:name="artistBO"
+            app:argType="com.crownstack.crownstackkotlin.model.bo.ArtistBO" />
+    </fragment>
+</navigation>

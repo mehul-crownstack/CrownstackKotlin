@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/songLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:background="@drawable/artist_item_selector"
+    android:clickable="true"
+    android:focusable="true"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp">
+
+    <ImageView
+        android:id="@+id/artistSongImageView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:contentDescription="@string/image_view_content_description"
+        android:src="@drawable/ic_launcher_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.025"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/artistSongTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:clickable="false"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:padding="5dp"
+        android:text="@string/app_name"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/artistSongImageView"
+        app:layout_constraintTop_toTopOf="@id/artistSongImageView" />
+
+    <TextView
+        android:id="@+id/artistNameTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:text="@string/app_name"
+        android:textColor="@color/text_color"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toStartOf="@id/artistDateTextView"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/artistSongTextView"
+        app:layout_constraintTop_toBottomOf="@id/artistSongTextView" />
+
+    <TextView
+        android:id="@+id/artistDateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:gravity="end"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:text="@string/app_name"
+        android:textColor="@color/text_color"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/artistNameTextView"
+        app:layout_constraintTop_toBottomOf="@id/artistSongTextView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
