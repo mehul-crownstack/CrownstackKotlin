@@ -21,7 +21,13 @@ class HomeFragment : BaseFragment(), MusicAlbumContract.IMusicAlbumView, IMusicI
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         mContentView = inflater.inflate(R.layout.fragment_home, container, false)
+        showBackButtonOnActionBar(false)
         return mContentView
+    }
+
+    override fun onStop() {
+        super.onStop()
+        showBackButtonOnActionBar(true)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

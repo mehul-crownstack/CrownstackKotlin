@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
+import com.crownstack.crownstackkotlin.MainActivity
 import com.crownstack.crownstackkotlin.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.Main
@@ -19,6 +20,12 @@ open class BaseFragment : Fragment() {
     protected lateinit var mContentView: View
     protected lateinit var mNavController: NavController
     private lateinit var mProgressDialog: Dialog
+    protected lateinit var mActivity: MainActivity
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        mActivity = context as MainActivity
+    }
 
     protected fun showProgressDialog(context: Context?) {
         activity?.runOnUiThread {
@@ -43,10 +50,14 @@ open class BaseFragment : Fragment() {
         }
     }
 
-    fun showToast(message: String = "sample testing") {
+    protected fun showToast(message: String = "sample testing") {
         CoroutineScope(Main).launch {
             Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
         }
+    }
+
+    protected fun showBackButtonOnActionBar(isBackButtonAllowed:Boolean) {
+        mActivity.supportActionBar?.setDisplayHomeAsUpEnabled(isBackButtonAllowed)
     }
 
 }

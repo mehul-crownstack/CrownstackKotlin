@@ -23,8 +23,9 @@ class SplashFragment : BaseFragment() {
         Handler(Looper.getMainLooper()).postDelayed({
             val action = SplashFragmentDirections.actionSplashFragmentToHomeFragment()
             mNavController.navigate(action)
+            mActivity.hideToolbarView(true)
         }, Constants.SPLASH_TIMER)
-        showToast(SplashFragment::class.java.simpleName)
+        mActivity.hideToolbarView(false)
         return mContentView
     }
 
