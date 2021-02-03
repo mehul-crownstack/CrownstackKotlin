@@ -6,16 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.crownstack.crownstackkotlin.constants.getDateFormatFromUtcTimeFormat
+import com.crownstack.crownstackkotlin.constants.setImageIntoImageView
 import com.crownstack.crownstackkotlin.listeners.IMusicItemClickListener
 import com.crownstack.crownstackkotlin.model.bo.ArtistBO
 
 class ArtistSongAdapter(
     private val mContext: Context?,
-    private val mMusicItemClickListener: IMusicItemClickListener) :
+    private val mMusicItemClickListener: IMusicItemClickListener
+) :
     RecyclerView.Adapter<ArtistSongAdapter.ArtistSongViewHolder>() {
 
     private var mArtistList: ArrayList<ArtistBO>? = null
@@ -42,9 +42,7 @@ class ArtistSongAdapter(
             holder.artistSongTextView.text = trackName
             holder.artistDateTextView.text = getDateFormatFromUtcTimeFormat(releaseDate)
             mContext?.run {
-                Glide.with(mContext).load(artist.artworkUrl30)
-                    .placeholder(ContextCompat.getDrawable(mContext, R.drawable.default_image))
-                    .into(holder.artistSongImageView)
+                setImageIntoImageView(artist.artworkUrl30, mContext, holder.artistSongImageView)
             }
             holder.songLayout.setOnClickListener { mMusicItemClickListener.onMusicItemClicked(artist) }
         }

@@ -40,5 +40,12 @@
         <argument
             android:name="artistBO"
             app:argType="com.crownstack.crownstackkotlin.model.bo.ArtistBO" />
+        <action
+            android:id="@+id/action_songDetailFragment_to_artistPhotoFragment"
+            app:destination="@id/artistPhotoFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/artistPhotoFragment"
+        android:name="com.crownstack.crownstackkotlin.fragments.ArtistPhotoFragment"
+        android:label="ArtistPhotoFragment" />
 </navigation>

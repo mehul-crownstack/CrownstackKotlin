@@ -10,4 +10,5 @@
     <string name="genre_name">Genre Name</string>
     <string name="release_date">Release Date</string>
     <string name="song_duration">Song Duration</string>
+    <string name="transition_name">transitionName</string>
 </resources>

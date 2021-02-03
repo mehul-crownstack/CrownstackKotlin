@@ -19,7 +19,7 @@ class HomeFragment : BaseFragment(), MusicAlbumContract.IMusicAlbumView, IMusicI
     private val mMusicAlbumPresenter = MusicAlbumPresenterImpl(this, this)
     private lateinit var mArtistAdapter: ArtistSongAdapter
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         mContentView = inflater.inflate(R.layout.fragment_home, container, false)
         showBackButtonOnActionBar(false)
         return mContentView

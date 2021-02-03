@@ -16,17 +16,19 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
             android:background="@drawable/white_curve_background"
             android:gravity="center">
 
             <ImageView
                 android:id="@+id/songCoverImageView"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:layout_margin="10dp"
-                android:contentDescription="@string/image_view_content_description" />
+                android:layout_width="@dimen/_200sdp"
+                android:layout_height="@dimen/_200sdp"
+                android:layout_margin="@dimen/_10sdp"
+                android:transitionName="@string/transition_name"
+                android:contentDescription="@string/image_view_content_description"
+                tools:targetApi="lollipop" />
 
         </LinearLayout>
 
@@ -34,12 +36,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-medium"
-            android:paddingStart="5dp"
-            android:paddingEnd="10dp"
-            android:paddingBottom="4dp"
+            android:paddingStart="@dimen/_5sdp"
+            android:paddingEnd="@dimen/_10sdp"
+            android:paddingBottom="@dimen/_4sdp"
             android:text="@string/track_name"
             android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:textSize="@dimen/_14sdp" />
 
         <TextView
             android:id="@+id/trackNameTextView"
@@ -47,9 +49,9 @@
             android:layout_height="wrap_content"
             android:background="@drawable/white_curve_background"
             android:fontFamily="cursive"
-            android:padding="10dp"
+            android:padding="@dimen/_10sdp"
             android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:textSize="@dimen/_14sdp" />
 
         <TextView
             android:layout_width="match_parent"
